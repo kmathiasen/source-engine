@@ -1,0 +1,186 @@
+// ./cstrike/addons/sourcemod/addons/data/gangperks.txt
+// The first subkey is the title that will appear in the menu
+//
+// The "cost" sub-sub key is how much it costs to change perks to this perk
+//
+// The "drain" sub-sub key is how much it drains per round
+//
+// The "basechance" sub-sub key is the chance that something will occur, if "givetype" is set to 1.
+//
+// The "baseadd" sub-sub key is the base amount that will be added no matter what. (so %multiplier will be replaced by (baseadd + (multiplier * ganglevel)))
+//
+// The "command" sub-sub key is the command to be executed on everyone
+//      You can execute any command, including the ones outlined in perks.txt
+//      Variables for commands are %useride and %multiplier
+//      for example:
+//          gang_addhealth %userid %multiplier
+//      %userid is required if you want to execute that command on the userid
+//      %multiplier is the amount to set/add, which is calculated based on the gangs level
+//
+// The "multiplier" sub-sub key is the amount to multiply the level by, in order to set attributes
+//      For example, if multiplier is 2 and gang level is 6, if you have the command
+//          gang_addhealth %userid %multiplier
+//      It will add 12 health to the player, on round start
+//
+// The "givetype" sub-sub key is... well, the give type
+//      if "0", the perk will have a level * multiplier * 100 percent chance of occuring
+//      if "1", the perk will ALWAYS be given, according to level * multiplier
+//      IE, if "givetype" is "0" multiplier is "0.1" and level is "8" there will be an 80% chance of the user getting the perk
+
+// IMPORTANT: There can not be any single quotes in any of the following!
+// IMPORTANT: When I say percentage chance, I mean percentage in decimal (IE, 0.1 is actually 10%)
+
+"gang perks"
+{
+    "Health"
+    {
+        "cost"          "8"
+        "drain"         "2"
+        "command"       "gang_addhealth %userid %multiplier 0"
+        "multiplier"    "1.08"
+        "basechance"    "0.75"
+        "baseadd"       "9"
+        "givetype"      "1"
+    }
+
+    "Speed"
+    {
+        "cost"          "10"
+        "drain"         "2"
+        "command"       "gang_addspeed %userid %multiplier 0"
+        "multiplier"    "0.009"
+        "basechance"    "0.75"
+        "baseadd"       "0.111"
+        "givetype"      "1"
+    }
+
+    "First Cell Chance"
+    {
+        "cost"          "12"
+        "drain"         "4"
+        "command"       "gang_teleport %userid -83 -2002 65 0"
+        "multiplier"    "0.0045"
+        "baseadd"       "0.09"
+        "givetype"      "0"
+    }
+
+    "VIP Spawn Chance"
+    {
+        "cost"          "6"
+        "drain"         "1"
+        "command"       "gang_teleport %userid 41 -373 65 0"
+        "multiplier"    "0.0125"
+        "baseadd"       "0.25"
+        "givetype"      "0"
+    }
+
+    "Flash Bang Chance"
+    {
+        "cost"          "14"
+        "drain"         "2"
+        "command"       "gang_give %userid weapon_flashbang 1 1 0"
+        "multiplier"    "0.0073"
+        "baseadd"       "0.13"
+        "givetype"      "0"
+    }
+
+    "Smoke Grenade Chance"
+    {
+        "cost"          "3"
+        "drain"         "2"
+        "command"       "gang_give %userid weapon_smokegrenade 1 1 0"
+        "multiplier"    "0.009"
+        "baseadd"       "0.15"
+        "givetype"      "0"
+    }
+
+    "HE Grenade Chance"
+    {
+        "cost"          "20"
+        "drain"         "4"
+        "command"       "gang_give %userid weapon_hegrenade 1 1 0"
+        "multiplier"    "0.007"
+        "baseadd"       "0.12"
+        "givetype"      "0"
+    }
+
+    "Bomb Chance"
+    {
+        "cost"          "25"
+        "drain"         "5"
+        "command"       "gang_give %userid weapon_c4 1 1 0"
+        "multiplier"    "0.0035"
+        "baseadd"       "0.07"
+        "givetype"      "0"
+    }
+
+    "1 Clip USP Chance"
+    {
+        "cost"          "30"
+        "drain"         "6"
+        "command"       "gang_give %userid weapon_usp 8 0 0"
+        "multiplier"    "0.004"
+        "baseadd"       "0.08"
+        "givetype"      "0"
+    }
+
+    "3 Bullet Scout Chance"
+    {
+        "cost"          "35"
+        "drain"         "5"
+        "command"       "gang_give %userid weapon_scout 3 0 0"
+        "multiplier"    "0.0032"
+        "baseadd"       "0.064"
+        "givetype"      "0"
+    }
+
+    "Damage Multiplier"
+    {
+        "cost"          "20"
+        "drain"         "3"
+        "command"       "gang_extra_damage %userid %multiplier"
+        "multiplier"    "0.005"
+        "baseadd"       "0.1"
+        "givetype"      "1"
+    }
+
+    "Take Less Damage"
+    {
+        "cost"          "20"
+        "drain"         "3"
+        "command"       "gang_absorb_damage %userid %multiplier"
+        "multiplier"    "0.005"
+        "baseadd"       "0.1"
+        "givetype"      "1"
+    }
+
+    "Respawn Chance"
+    {
+        "cost"          "100"
+        "drain"         "7"
+        "command"       "gang_respawn %userid"
+        "multiplier"    "0.00175"
+        "baseadd"       "0.035"
+        "givetype"      "0"
+    }
+
+    "Executioner"
+    {
+        "cost"          "50"
+        "drain"         "3"
+        "command"       "gang_executioner %userid"
+        "multiplier"    "0.0045"
+        "baseadd"       "0.09"
+        "givetype"      "0"
+    }
+
+    "Super Knife"
+    {
+        "cost"          "50"
+        "drain"         "4"
+        "command"       "gang_superknife %userid"
+        "multiplier"    "0.004333"
+        "baseadd"       "0.08666"
+        "givetype"      "0"
+    }
+}

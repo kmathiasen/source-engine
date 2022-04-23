@@ -1,0 +1,261 @@
+// ./cstrike/addons/sourcemod/data/perks.txt
+
+// So far a list of commands are
+//  gang_addhealth %userid <amount>
+//  gang_addspeed %userid <percent>
+//  gang_setgravity %userid <multiplier>
+//  gang_give %userid weapon_<weapon name> [ammo] [clips]
+//  gang_noclip %userid
+//  gang_teleport %userid <x> <y> <z>
+//  gang_open_cells %userid
+//  gang_absorb_damage %userid <multiplier>
+//  gang_extra_damage %userid <multiplier>
+//  gang_sethealth <@team/%userid> <health>
+//  gang_respawn %userid [x] [y] [z]
+//  gang_executioner %userid
+
+// When I say @team, I mean:
+//  @t, @ct, @all
+
+// Note: You can actually use ANY command
+// For example: sm_mute %userid
+// The above commands are just ones provided for ease (and so they don't spam chat)
+
+// Just replace the values within the <>'s with what it tells you to
+// For example "weapon_<weapon name>" could be replaced with "weapon_deagle"
+
+// Parameter's in [] are optional, but otherwise function the same way as <>'s
+
+// You can add multiple commands by seperating them with semicolons
+// For example "gang_addhealth %userid 25;gang_addspeed %userid .1"
+
+// IMPORTANT: Command length must not exceed 121 characters
+// IMPORTANT: Command string must not have the '|' character
+// IMPORTANT: Cost must not exceed 9999
+
+// The "use every" field denotes every how many rounds the command can be used
+// The "maxround" field denotes the max times the command can be used per round
+// The "cooldown" field denotes how many rounds a person has to wait before buying ANYTHING after they have bought that specific item. If the field has "maxround" set, this value will only be applied when they buy that amount.
+// The "global" field denotes how many rounds the buy menu is disabled for EVERYONE when someone buys a big ticket item, to prevent day after day after day after day being ruined by multiple people.
+
+"perks"
+{
+    "25 Extra Health"
+    {
+        "cost"          "90"
+        "command"       "gang_addhealth %userid 25"
+        "maxround"      "8"
+        "cooldown"      "2"
+    }
+
+    "20% Speed Boost"
+    {
+        "cost"          "220"
+        "command"       "gang_addspeed %userid 0.2"
+        "maxround"      "4"
+        "cooldown"      "2"
+    }
+
+    "20% Lower Gravity"
+    {
+        "cost"          "120"
+        "command"       "gang_setgravity %userid 0.8"
+    }
+
+    "12 Bullet USP"
+    {
+        "cost"          "410"
+        "command"       "gang_give %userid weapon_usp 12 0"
+        "cooldown"      "1"
+        "use every"     "3"
+    }
+
+    "Smoke Grenade"
+    {
+        "cost"          "30"
+        "command"       "gang_give %userid weapon_smokegrenade"
+        "maxround"      "4"
+    }
+
+    "Flash Bang"
+    {
+        "cost"          "40"
+        "command"       "gang_give %userid weapon_flashbang"
+        "maxround"      "3"
+    }
+
+    "HE Grenade"
+    {
+        "cost"          "86"
+        "command"       "gang_give %userid weapon_hegrenade"
+        "maxround"      "2"
+        "cooldown"	"1"
+    }
+
+    "Admin Room"
+    {
+        "cost"          "3533"
+        "command"       "gang_teleport %userid 1912.52 -158.57 1.0"
+        "use every"     "15"
+        "cooldown"      "7"
+        "global"        "2"
+    }
+
+    "VIP"
+    {
+        "cost"          "60"
+        "command"       "gang_teleport %userid 41.85 -373.0 35.0"
+    }
+
+    "First Cell"
+    {
+        "cost"          "363"
+        "command"       "gang_teleport %userid -83.06 -2002.58 10.0"
+        "cooldown"      "1"
+        "use every"     "1"
+    }
+
+    "Noclip"
+    {
+        "cost"          "9001"
+        "command"       "gang_noclip %userid"
+        "use every"     "666"
+        "cooldown"      "20"
+        "global"        "5"
+    }
+
+    "1 Clip Awp"
+    {
+        "cost"          "699"
+        "command"       "gang_give %userid weapon_awp 10 0"
+        "use every"     "5"
+        "cooldown"      "3"
+    }
+
+    "Bomb"
+    {
+        "cost"          "366"
+        "command"       "gang_give %userid weapon_c4"
+        "use every"     "3"
+        "cooldown"      "2"
+    }
+
+    "Slay Everyone"
+    {
+        "cost"          "3999"
+        "command"       "sm_slay @all"   
+        "use every"     "115"
+        "cooldown"      "20"
+        "global"        "3"
+    }
+
+    "Open Cells"
+    {
+        "cost"          "288"
+        "command"       "gang_open_cells %userid"
+        "use every"     "3"
+        "cooldown"      "2"
+    }
+
+    "Timebomb CTs"
+    {
+        "cost"          "3955"
+        "command"       "sm_timebomb @ct"
+        "use every"     "130"
+        "cooldown"      "20"
+        "global"        "3"
+    }
+
+    "All CTs 1 HP"
+    {
+        "cost"          "699"
+        "command"       "gang_sethealth @ct 1"
+        "use every"     "18"
+        "cooldown"      "8"
+        "global"        "2"
+    }
+
+    "Low Grav Everyone"
+    {
+        "cost"          "1399"
+        "command"       "sm_gravity @all 0.2"
+        "use every"     "8"
+        "cooldown"      "4"
+        "global"        "2"
+    }
+
+    "Drug Everyone"
+    {
+        "cost"          "1999"
+        "command"       "sm_drug @all"
+        "use every"     "45"
+        "cooldown"      "8"
+        "global"        "2"
+    }
+
+    "100% Damage Multiplier"
+    {
+        "cost"          "250"
+        "command"       "gang_extra_damage %userid 1.0"
+	"cooldown"	"1"
+    }
+
+    "50% Damage Reduction"
+    {
+        "cost"          "2500"
+        "command"       "gang_absorb_damage %userid 0.5"
+	"cooldown"	"2"
+    }
+
+    "Respawn When Dead"
+    {
+        "cost"          "1400"
+        "command"       "gang_respawn %userid"
+        "use every"     "2"
+        "cooldown"      "1"
+    }
+
+    "Darkness"
+    {
+        "cost"          "1550"
+        "command"       "gang_lightstyle a"
+        "use every"     "10"
+        "cooldown"      "3"
+        "global"        "1"
+    }
+
+    "Vanish"
+    {
+        "cost"          "320"
+        "command"       "invis %userid"
+        "use every"     "9"
+        "cooldown"      "5"
+    }
+
+    "P90 post-up"
+    {
+        "cost"          "901"
+        "command"       "gang_teleport %userid -232.12 -2424.47 172.03;gang_give %userid weapon_p90 50 100"
+        "cooldown"      "10"
+        "use every"     "4"
+        "global"        "1"
+    }
+
+    "3 Throwing Knives"
+    {
+        "cost"          "250"
+        "command"       "gang_give_throwingknives %userid 3"
+        "cooldown"      "1"
+        "use every"     "1"
+        "global"        "1"
+    }
+
+
+    "Molotov Cocktail"
+    {
+        "cost"          "95"
+        "command"       "gang_give %userid weapon_molotov"
+        "maxround"      "1"
+        "cooldown"	"1"
+    }
+}

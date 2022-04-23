@@ -1,0 +1,210 @@
+// ./cstrike/addons/sourcemod/data/perks.txt
+
+// So far a list of commands are
+//  gang_addhealth %userid <amount>
+//  gang_addspeed %userid <percent>
+//  gang_setgravity %userid <multiplier>
+//  gang_give %userid weapon_<weapon name> [ammo] [clips]
+//  gang_noclip %userid
+//  gang_teleport %userid <x> <y> <z>
+//  gang_open_cells %userid
+//  gang_absorb_damage %userid <multiplier>
+//  gang_extra_damage %userid <multiplier>
+//  gang_sethealth <@team/%userid> <health>
+//  gang_respawn %userid [x] [y] [z]
+//  gang_executioner %userid
+
+// When I say @team, I mean:
+//  @t, @ct, @all
+
+// Note: You can actually use ANY command
+// For example: sm_mute %userid
+// The above commands are just ones provided for ease (and so they don't spam chat)
+
+// Just replace the values within the <>'s with what it tells you to
+// For example "weapon_<weapon name>" could be replaced with "weapon_deagle"
+
+// Parameter's in [] are optional, but otherwise function the same way as <>'s
+
+// You can add multiple commands by seperating them with semicolons
+// For example "gang_addhealth %userid 25;gang_addspeed %userid .1"
+
+// IMPORTANT: Command length must not exceed 121 characters
+// IMPORTANT: Command string must not have the '|' character
+// IMPORTANT: Cost must not exceed 9999
+
+// The "use every" field denotes every how many rounds the command can be used
+// The "maxround" field denotes the max times the command can be used per round
+// The "cooldown" field denotes how many rounds a person has to wait before buying ANYTHING after they have bought that specific item. If the field has "maxround" set, this value will only be applied when they buy that amount.
+// The "global" field denotes how many rounds the buy menu is disabled for EVERYONE when someone buys a big ticket item, to prevent day after day after day after day being ruined by multiple people.
+
+"perks"
+{
+    "25 Extra Health"
+    {
+        "cost"          "90"
+        "command"       "gang_addhealth %userid 25"
+        "maxround"      "8"
+        "cooldown"      "2"
+    }
+
+    "20% Speed Boost"
+    {
+        "cost"          "220"
+        "command"       "aio_add_speed %userid 0.2"
+        "maxround"      "4"
+        "cooldown"      "2"
+    }
+
+    "20% Lower Gravity"
+    {
+        "cost"          "120"
+        "command"       "gang_setgravity %userid 0.8"
+    }
+
+    "Admin Room"
+    {
+        "cost"          "3533"
+        "command"       "gang_teleport %userid 1912.52 -158.57 1.0"
+        "use every"     "15"
+        "cooldown"      "7"
+        "global"        "2"
+    }
+
+    "VIP"
+    {
+        "cost"          "60"
+        "command"       "gang_teleport %userid 41.85 -373.0 35.0"
+    }
+
+    "First Cell"
+    {
+        "cost"          "363"
+        "command"       "gang_teleport %userid -83.06 -2002.58 10.0"
+        "cooldown"      "1"
+        "use every"     "1"
+    }
+
+    "Noclip"
+    {
+        "cost"          "2001"
+        "command"       "gang_noclip %userid"
+        "use every"     "66"
+        "cooldown"      "10"
+        "global"        "3"
+    }
+
+    "Bomb"
+    {
+        "cost"          "366"
+        "command"       "aio_give_caber %userid"
+        "use every"     "3"
+        "cooldown"      "2"
+    }
+
+    "Slay Everyone"
+    {
+        "cost"          "3999"
+        "command"       "sm_slay @all"   
+        "use every"     "115"
+        "cooldown"      "20"
+        "global"        "3"
+    }
+
+    "Open Cells"
+    {
+        "cost"          "288"
+        "command"       "gang_open_cells %userid"
+        "use every"     "3"
+        "cooldown"      "2"
+    }
+
+    "Timebomb CTs"
+    {
+        "cost"          "3955"
+        "command"       "sm_timebomb @blue"
+        "use every"     "130"
+        "cooldown"      "20"
+        "global"        "3"
+    }
+
+    "All CTs 1 HP"
+    {
+        "cost"          "699"
+        "command"       "gang_sethealth @blue 1"
+        "use every"     "18"
+        "cooldown"      "8"
+        "global"        "2"
+    }
+
+    "Low Grav Everyone"
+    {
+        "cost"          "1399"
+        "command"       "sm_gravity @all 0.2"
+        "use every"     "8"
+        "cooldown"      "4"
+        "global"        "2"
+    }
+
+    "Drug Everyone"
+    {
+        "cost"          "1999"
+        "command"       "sm_drug @all"
+        "use every"     "45"
+        "cooldown"      "8"
+        "global"        "2"
+    }
+
+    "100% Damage Multiplier"
+    {
+        "cost"          "250"
+        "command"       "gang_extra_damage %userid 1.0"
+        "cooldown"      "1"
+    }
+
+    "50% Damage Reduction"
+    {
+        "cost"          "400"
+        "command"       "gang_absorb_damage %userid 0.5"
+        "cooldown"      "2"
+    }
+
+    "Respawn When Dead"
+    {
+        "cost"          "1400"
+        "command"       "gang_respawn %userid"
+        "use every"     "2"
+        "cooldown"      "1"
+    }
+
+    "Darkness"
+    {
+        "cost"          "1550"
+        "command"       "gang_lightstyle a"
+        "use every"     "10"
+        "cooldown"      "3"
+        "global"        "1"
+    }
+
+    "Vanish"
+    {
+        "cost"          "320"
+        "command"       "invis %userid"
+        "use every"     "9"
+        "cooldown"      "5"
+    }
+
+    "4 Minutes of Kritz"
+    {
+        "cost"          "350"
+        "command"       "aio_kritz %userid 240"
+        "cooldown"      "1"
+    }
+
+    "Uber Yourself"
+    {
+        "cost"          "400"
+        "command"       "aio_uber %userid"
+        "cooldown"      "2"
+    }
+}

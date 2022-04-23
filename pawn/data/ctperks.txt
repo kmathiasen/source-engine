@@ -1,0 +1,93 @@
+// ./cstrike/addons/sourcemod/data/ctperks.txt
+
+// "maxround" specifies how many times the perk can be used each round by all players cummulative.
+// "maxplayer" specifies how many times the perk can be used each round for each player.
+
+// This file follows the format of gangs buy menu
+// Since the AIO script is meant to be run with gangs, the following gang commands exist:
+//  gang_addhealth %userid <amount>
+//  gang_addspeed %userid <percent>
+//  gang_setgravity %userid <multiplier>
+//  gang_give %userid weapon_<weapon name> [ammo] [clips]
+//  gang_noclip %userid
+//  gang_teleport %userid <x> <y> <z>
+//  gang_open_cells %userid
+//  gang_absorb_damage %userid %multiplier  #### PROBABLY DOESN'T WORK FOR CTS
+//  gang_extra_damage %userid %multiplier   #### PROBABLY DOESN'T WORK FOR CTS
+
+// AIO Specific Commands:
+// aio_adminroom %userid
+
+// Note: You can actually use ANY command
+// For example: sm_mute #%userid
+// The above commands are just ones provided for ease (and so they don't spam chat)
+
+// Just replace the values within the <>'s with what it tells you to
+// For example "weapon_<weapon name>" could be replaced with "weapon_deagle"
+
+// Parameter's in [] are optional, but otherwise function the same way as <>'s
+
+// You can add multiple commands by seperating them with semicolons
+// For example "gang_addhealth %userid 25;gang_addspeed %userid .1"
+
+// IMPORTANT: Command length must not exceed 121 characters
+// IMPORTANT: Command string must not have the '|' character
+// IMPORTANT: Cost must not exceed 9999
+
+"perks"
+{
+    "25 Extra Health"
+    {
+        "cost"      "30"
+        "command"   "gang_addhealth %userid 25"
+        "maxround"  "12"
+        "maxplayer" "8"
+    }
+
+    "15% Speed Boost"
+    {
+        "cost"      "30"
+        "command"   "gang_addspeed %userid 0.15"
+        "maxround"  "6"
+        "maxplayer" "4"
+    }
+
+    "40% Less Gravity"
+    {
+        "cost"      "20"
+        "command"   "gang_setgravity %userid 0.6"
+        "maxround"  "2"
+    }
+
+    "Admin Room"
+    {
+        "cost"      "100"
+        "command"   "aio_adminroom %userid"
+    }
+
+    "Explosive Armor"
+    {
+        "cost"      "66"
+        "command"   "aio_bombarmor %userid 0.5"
+    }
+
+    "Radar Hacks"
+    {
+        "cost"      "400"
+        "command"   "aio_radarhacks %userid"
+    }
+
+    "Grenade Hacks"
+    {
+        "cost"      "89"
+        "command"   "aio_grenadehacks %userid"
+    }
+
+    "3 Throwing Knives"
+    {
+        "cost"          "69"
+        "command"       "gang_give_throwingknives %userid 3"
+        "maxround"      "2"
+        "maxplayer"     "1"
+    }
+}
